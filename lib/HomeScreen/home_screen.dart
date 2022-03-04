@@ -15,6 +15,7 @@ class HomeScreen extends StatelessWidget {
       borderRadius: BorderRadius.vertical(
     bottom: Radius.circular(20),
     ),
+
       ),
         elevation:5,
         backgroundColor: Colors.white,
