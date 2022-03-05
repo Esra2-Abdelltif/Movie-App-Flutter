@@ -19,7 +19,7 @@ import 'package:flutter/material.dart';
 
 
 
-Widget MovieCard({String UrlPoster,String MovieName,double MovieRate})=> InkWell(
+Widget MovieCard({String UrlPoster,String MovieName,num MovieRate})=> InkWell(
   onTap: (){},
   child: Container(
 
@@ -43,22 +43,30 @@ Widget MovieCard({String UrlPoster,String MovieName,double MovieRate})=> InkWell
         ),
         SizedBox(
           height: 5,),
-        Center(
-          child: Text('${MovieName}',
-            style: TextStyle(
-                fontSize: 18,
-                color: Colors.black87,
-                fontWeight: FontWeight.bold
-            ),
-            textAlign: TextAlign.start,maxLines: 1,
-            overflow: TextOverflow.ellipsis,),
-        ),
+        // Center(
+        //   child: Text('${MovieName}',
+        //     style: TextStyle(
+        //         fontSize: 18,
+        //         color: Colors.black87,
+        //         fontWeight: FontWeight.bold
+        //     ),
+        //     textAlign: TextAlign.start,maxLines: 1,
+        //     overflow: TextOverflow.ellipsis,),
+        // ),
         SizedBox(height: 5,),
-        // Text('${MovieRate}',
-        //   style: TextStyle(
-        //       fontSize: 18,color: Colors.grey[600],fontWeight: FontWeight.bold
-        //   ),
-        //   textAlign: TextAlign.start,),
+        Row(children: [
+          Text('${' ⭐ '* MovieRate.toInt()}',
+            style: TextStyle(
+                fontSize: 10,
+            ),
+            textAlign: TextAlign.start,),
+          SizedBox(width: 5,),
+          Text('${ MovieRate.toString()}',
+            style: TextStyle(
+                fontSize: 14,color: Colors.black,fontWeight: FontWeight.bold
+            ),
+            textAlign: TextAlign.start,),
+        ],)
 
 
 

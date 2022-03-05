@@ -1,8 +1,14 @@
 import 'package:flutter/cupertino.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:movie_app/HomeScreen/Widgets.dart';
 import 'package:http/http.dart ' as http;
+import 'package:movie_app/Shared/Components/component.dart';
+import 'package:movie_app/Shared/Constans/constans.dart';
+import 'package:movie_app/Shared/widgets/top_movies.dart';
+
 import 'dart:convert';
+
+
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({Key key}) : super(key: key);
@@ -12,8 +18,28 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
+  //
+  // Future<List<dynamic>> _getJson() async {
+  //   final List<String> urls = [
+  //     "https://api.themoviedb.org/3/movie/top_rated?api_key=247a18e38e58225afffc980e1d8998e1"
+  //         "https://api.themoviedb.org/3/movie/popular?api_key=247a18e38e58225afffc980e1d8998e1"
+  //         "https://api.themoviedb.org/3/movie/now_playing?api_key=247a18e38e58225afffc980e1d8998e1"
+  //   ];
+  //   final List<dynamic> result = [];
+  //
+  //   urls.forEach((url) async {
+  //     await compute(_fetchAndParse, url).then((items) => result.addAll(items));
+  //   });
+  //
+  //   return result;
+  // }
+  //
+  // List<dynamic> _fetchAndParse(String url) {
+  //   final response = await http.get(Uri.parse(url));
+  //   return json.decode(response.body);
+  // }
   Future <List>getMovieData() async{
-    var res = await http.get(Uri.parse("https://api.themoviedb.org/3/movie/popular?api_key=247a18e38e58225afffc980e1d8998e1"));
+    var res = await http.get(Uri.parse(BaseUrL1));
     if (res.statusCode ==200)
     {
       var obj =json.decode((res.body))['results'];
@@ -45,7 +71,7 @@ class _HomeScreenState extends State<HomeScreen> {
         centerTitle: true,) ,
       body:  FutureBuilder<List>(
         future:getMovieData(),
-        builder: (ctx,AsyncSnapshot<List>snapshot){
+        builder: (ctx,AsyncSnapshot< List>snapshot){
           if (!snapshot.hasData) return Text("Loading");
 
       return Padding(
@@ -53,6 +79,7 @@ class _HomeScreenState extends State<HomeScreen> {
           child:ListView(
 
             children: [
+              TopMovies(),
               SizedBox(height: 20,),
               //Section Top Movies
               SectionTitle(Title: 'Top Movie'),
@@ -83,7 +110,7 @@ class _HomeScreenState extends State<HomeScreen> {
                     itemBuilder:(_,int index)=> Padding(
                       padding: const EdgeInsets.symmetric(horizontal: 12.0),
                       child: MovieCard(UrlPoster: snapshot.data[index]['poster_path'],
-                        MovieName: snapshot.data[index]['original_title'],
+                        MovieName: snapshot.data[index]['original_title'],MovieRate: snapshot.data[index]['vote_average'],
                       ),
                     ),
                   )
