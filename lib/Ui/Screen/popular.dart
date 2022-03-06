@@ -4,9 +4,7 @@ import 'package:movie_app/Bloc/cubit.dart';
 import 'package:movie_app/Bloc/state.dart';
 import 'package:movie_app/Data/Models/popular_model.dart';
 import 'package:movie_app/Shared/Components/component.dart';
-import 'package:movie_app/Ui/Screen/top_movies.dart';
 import 'package:movie_app/Ui/widgets/popular_widget.dart';
-import 'package:movie_app/Ui/widgets/topmovie_widget.dart';
 
 
 class PopularMovie extends StatefulWidget {
@@ -34,7 +32,7 @@ class _PopularMovieState extends State<PopularMovie> {
             return buildItem();
 
           } else {
-            return TopMovies();
+            return ShowLooadingIcon();
           }
         });
   }
