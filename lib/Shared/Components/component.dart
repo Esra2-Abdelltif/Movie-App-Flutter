@@ -2,6 +2,10 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
+Widget ShowLooadingIcon()=>Center(child: CircularProgressIndicator());
+
+
+
  Widget TopMovieCard({String UrlPoster})=> InkWell(
    onTap: (){},
    child:Container(
@@ -16,9 +20,6 @@ import 'package:flutter/material.dart';
 
 
    );
-
-
-
 Widget MovieCard({String UrlPoster,String MovieName,num MovieRate})=> InkWell(
   onTap: (){},
   child:
@@ -93,5 +94,5 @@ Widget SectionTitle({String Title})=>  Row(
 );
 
 
-// Center(child: CircularProgressIndicator());
+//
 

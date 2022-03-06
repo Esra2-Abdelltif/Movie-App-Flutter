@@ -3,9 +3,7 @@ import 'package:flutter/material.dart';
 class Description extends StatelessWidget {
   final String name, description, backdropurl, posterurl;
   final num  rate;
-
-  const Description(
-      {Key key,
+  const Description({Key key,
         this.name,
         this.description,
         this.backdropurl,

@@ -13,9 +13,9 @@ class MovieCubit extends Cubit<MovieState> {
   final TopMovieRepostory topMovieRepostory;
   final NowPlayingRepostory nowPlayingRepostoryy;
 
-  List<PopularModel> popularMovie;
-  List<TopMovieModel> topMovie;
-  List<NowPlayingModel> nowplayingMovie;
+  List<PopularModel> popularMovie=[];
+  List<TopMovieModel> topMovie=[];
+  List<NowPlayingModel> nowplayingMovie=[];
 
   MovieCubit(this.popularRepostory,this.topMovieRepostory,this.nowPlayingRepostoryy) : super(MovieInitial());
   static  MovieCubit get(context) => BlocProvider.of(context);
