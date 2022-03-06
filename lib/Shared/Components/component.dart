@@ -21,7 +21,8 @@ import 'package:flutter/material.dart';
 
 Widget MovieCard({String UrlPoster,String MovieName,num MovieRate})=> InkWell(
   onTap: (){},
-  child: Container(
+  child:
+  Container(
 
     width: 180,
     child: Column(
@@ -90,4 +91,7 @@ Widget SectionTitle({String Title})=>  Row(
     ),
   ],
 );
+
+
+// Center(child: CircularProgressIndicator());
 
