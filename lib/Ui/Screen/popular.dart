@@ -1,48 +1,50 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:movie_app/Bloc/cubit.dart';
 import 'package:movie_app/Bloc/state.dart';
-import 'package:movie_app/Data/Models/top_movie_model.dart';
+import 'package:movie_app/Data/Models/popular_model.dart';
 import 'package:movie_app/Shared/Components/component.dart';
+import 'package:movie_app/Ui/Screen/top_movies.dart';
+import 'package:movie_app/Ui/widgets/popular_widget.dart';
 import 'package:movie_app/Ui/widgets/topmovie_widget.dart';
 
-class TopMovies extends StatefulWidget {
-  const TopMovies({Key key}) : super(key: key);
+
+class PopularMovie extends StatefulWidget {
+  const PopularMovie({Key key}) : super(key: key);
+
   @override
-  State<TopMovies> createState() => _TopMoviesState();
+  State<PopularMovie> createState() => _PopularMovieState();
 }
 
-class _TopMoviesState extends State<TopMovies> {
-  List<Results> alltopmovies;
+class _PopularMovieState extends State<PopularMovie> {
+  List<Results> allpopularmovies;
   @override
   void initState() {
     // TODO: implement initState
     super.initState();
-    BlocProvider.of<MovieCubit>(context).FetchAllTopMovie();
-  }
+    BlocProvider.of<MovieCubit>(context).FetchAllPopular();
 
+  }
   Widget BuildBlocWidget() {
-   return BlocBuilder<MovieCubit, MovieState>(
-       builder: (context, state)
-    {
-      if ((state is TopMovieLoaded)) {
-        alltopmovies = (state).listTopMoviemodel.results;
-        return buildItem();
+    return BlocBuilder<MovieCubit, MovieState>(
+        builder: (context, state)
+        {
+          if ((state is PopularMovieLoaded)) {
+           allpopularmovies = (state).listpopularmodel.results;
+            return buildItem();
 
-      } else {
-        return ShowLooadingIcon();
-      }
-    });
+          } else {
+            return TopMovies();
+          }
+        });
   }
-  Widget buildItem() {
-   return Container(
+  Widget buildItem(){
+    return Container(
       padding: EdgeInsets.symmetric(horizontal: 10, vertical: 25),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Text(
-            'Top Movies',
+          Text('Popular Movies',
             style: TextStyle(
                 fontSize: 26, color: Colors.green, fontWeight: FontWeight.bold),
           ),
@@ -53,9 +55,9 @@ class _TopMoviesState extends State<TopMovies> {
             child: ListView.builder(
               scrollDirection: Axis.horizontal,
               shrinkWrap: true,
-              itemCount: alltopmovies.length,
+              itemCount: allpopularmovies.length,
               itemBuilder: (context,index){
-                return TopMovieItem(topMovieModel: alltopmovies[index]);
+                return PopularMovieItem(popularModel: allpopularmovies[index]);
               },
 
 
@@ -64,6 +66,7 @@ class _TopMoviesState extends State<TopMovies> {
         ],
       ),
     );
+
   }
 
 

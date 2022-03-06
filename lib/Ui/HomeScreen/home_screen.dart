@@ -8,6 +8,8 @@ import 'package:movie_app/Data/Respository/top_movie_repsitory.dart';
 import 'package:movie_app/Data/Web%20Service/nowplaying_service.dart';
 import 'package:movie_app/Data/Web%20Service/popular_service.dart';
 import 'package:movie_app/Data/Web%20Service/top_movie_service.dart';
+import 'package:movie_app/Ui/Screen/nowplayiny.dart';
+import 'package:movie_app/Ui/Screen/popular.dart';
 import 'package:movie_app/Ui/Screen/top_movies.dart';
 
 
@@ -30,6 +32,10 @@ class HomeScreen extends StatelessWidget {
           listener: (BuildContext context,MovieState state)
           {
             if(state is MovieInitial) return print('intial state');
+            if(state is PopularMovieLoaded) return print('popular state');
+            if(state is TopMovieLoaded) return print('top movie state');
+            if(state is NowPlayingMovieLoaded) return print('popular state');
+
           },
           builder:(BuildContext context ,MovieState state) {
             return Scaffold(
@@ -54,14 +60,9 @@ class HomeScreen extends StatelessWidget {
                     ),
                     child: ListView(
                       children: [
-                        TopMovies(),
-                        Text(
-                          'Movie App',
-                          style: TextStyle(color: Colors.black87),
-                        ),
-
-                        // PopularMovie(popular:popularmovie,),
-                        // NowPlaying(nowplaying: nowplayingmovie,),
+                         TopMovies(),
+                         PopularMovie(),
+                       NowPlaying(),
 
                       ],
                     )));

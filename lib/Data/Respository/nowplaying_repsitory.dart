@@ -3,14 +3,14 @@ import 'package:movie_app/Data/Web%20Service/nowplaying_service.dart';
 
 class  NowPlayingRepostory {
   //get object from web sercvice
-  NowPlayingMovieSercive nowPlayingMovieSercive;
+ final NowPlayingMovieSercive nowPlayingMovieSercive;
 
   //Construtor
   NowPlayingRepostory(this.nowPlayingMovieSercive);
 
-  Future<List<NowPlayingModel>> RequestToNowPlayingMovieWebService() async {
-    var newplayingMovies =
-    await nowPlayingMovieSercive.GetDataFromNowPlayingMovieMoldel();
-    return newplayingMovies.map((e) =>  NowPlayingModel.fromJson(e)).toList();
+  Future<NowPlayingModel> RequestToNowPlayingMovieWebService() async {
+
+    final newplayingMovies = await nowPlayingMovieSercive.GetDataFromNowPlayingMovieMoldel();
+    return  NowPlayingModel.fromJson(newplayingMovies);
   }
 }

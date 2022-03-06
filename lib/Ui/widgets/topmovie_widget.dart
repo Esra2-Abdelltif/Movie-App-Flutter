@@ -3,43 +3,50 @@ import 'package:movie_app/Data/Models/top_movie_model.dart';
 import 'package:movie_app/Ui/DetialsScreen/details_movies.dart';
 
 class TopMovieItem extends StatelessWidget {
-  final TopMovieModel topMovieModel;
+  final Results topMovieModel;
   const TopMovieItem({Key key, this.topMovieModel}) : super(key: key);
 
   @override
   Widget build(BuildContext context ) {
-     return  Container(
-       child: InkWell(
-         onTap: () {
-           Navigator.push(
-               context,
-               MaterialPageRoute(
-                   builder: (context) =>Description()));
-         },
-         child: Container(
-           padding: EdgeInsets.all(5),
-           width: 350,
-           child: Column(
-             children: [
-               Container(
-                 decoration: BoxDecoration(
-                   borderRadius: BorderRadius.circular(10),
-                   image: DecorationImage(
-                       image: NetworkImage('https://www.themoviedb.org/t/p/w300_and_h450_bestv2/'+ topMovieModel.results[topMovieModel.totalResults].posterPath,),
-                       fit: BoxFit.fill),
-                 ),
-                 height: 250,
-               ),
-               SizedBox(height: 8),
-               Container(
-                 child: Text(topMovieModel.results[topMovieModel.totalResults].title,
-                   style: TextStyle(
-                       fontWeight: FontWeight.bold, fontSize: 18),
-                 ),
-               )
-             ],
+     return  InkWell(
+       onTap: () {
+         Navigator.push(
+             context,
+             MaterialPageRoute(
+                 builder: (context) =>Description(description: topMovieModel.overview,name: topMovieModel.originalTitle,title: topMovieModel.title,
+                   backdropurl: topMovieModel.backdropPath,
+                   posterurl: topMovieModel.posterPath,
+                   rate: topMovieModel.voteAverage
+                   ,)));
+       },
+       child: Column(
+         children: [
+           Card(
+             shape: RoundedRectangleBorder(borderRadius: BorderRadius.all(Radius.circular(8.0))),
+             semanticContainer: true,
+             clipBehavior: Clip.antiAliasWithSaveLayer,
+             child: Image.network('${'https://www.themoviedb.org/t/p/w300_and_h450_bestv2/'+topMovieModel.posterPath}',
+               fit: BoxFit.fill,
+               width: 220,
+               height: 200,
+             ),
+             elevation: 3,
+
+
+
            ),
-         ),
+           SizedBox(height: 8),
+           Center(
+             child: Text(topMovieModel.originalTitle,
+               style: TextStyle(
+                   fontSize: 18,
+                   color: Colors.black87,
+                   fontWeight: FontWeight.bold
+               ),
+               textAlign: TextAlign.start,maxLines: 1,
+               overflow: TextOverflow.ellipsis,),
+           ),
+         ],
        ),
      );
 

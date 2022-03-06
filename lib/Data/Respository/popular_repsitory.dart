@@ -3,14 +3,16 @@ import 'package:movie_app/Data/Web%20Service/popular_service.dart';
 
 class PopularRepostory {
   //get object from web sercvice
-  PopularMovieService popularMovieService;
+ final PopularMovieService popularMovieService;
 
   //Construtor
   PopularRepostory(this.popularMovieService);
 
-  Future<List<PopularModel>> RequestToPopularMovieWebService() async {
-    var popularMovies =
-        await popularMovieService.GetDataFromPopularMovieMoldel();
-    return popularMovies.map((e) => PopularModel.fromJson(e)).toList();
-  }
+ Future<PopularModel> RequestToPopularMovieWebService() async {
+
+
+   final popularmovie = await popularMovieService.GetDataFromPopularMovieMoldel();
+
+   return PopularModel.fromJson(popularmovie);
+ }
 }

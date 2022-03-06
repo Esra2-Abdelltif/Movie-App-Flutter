@@ -1,20 +1,26 @@
 import 'package:flutter/material.dart';
 
 class Description extends StatelessWidget {
-  final String name, description, backdropurl, posterurl;
+  final String name, description, backdropurl, posterurl,title;
   final num  rate;
   const Description({Key key,
         this.name,
         this.description,
         this.backdropurl,
         this.posterurl,
-        this.rate,
+        this.rate,this.title
         })
       : super(key: key);
   @override
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
+        appBar: AppBar(title: Text(name,style: TextStyle(color: Colors.black),),
+          backgroundColor: Colors.white,centerTitle: true,elevation: 5,  shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.vertical(
+              bottom: Radius.circular(20),
+            ),
+          ),),
         backgroundColor: Colors.white,
        // appBar: AppBar(),
         body: Container(
@@ -50,20 +56,23 @@ class Description extends StatelessWidget {
                     ),
                     textAlign: TextAlign.start,),
                 ],)),
-            Row(
-              children: [
-                Container(
-                  height: 200,
-                  width: 100,
-                  child: Image.network('${'https://www.themoviedb.org/t/p/w300_and_h450_bestv2/'+backdropurl}'),
-                ),
-                Flexible(
-                  child: Container(
-                      padding: EdgeInsets.all(10),
-                      child:  Text(description),
-                  )
-                ),
-              ],
+            Padding(
+              padding: const EdgeInsets.only(left: 10),
+              child: Row(
+                children: [
+                  Container(
+                    height: 200,
+                    width: 100,
+                    child: Image.network('${'https://www.themoviedb.org/t/p/w300_and_h450_bestv2/'+backdropurl}'),
+                  ),
+                  Flexible(
+                    child: Container(
+                        padding: EdgeInsets.all(10),
+                        child:  Text(description),
+                    )
+                  ),
+                ],
+              ),
             )
           ]),
         ),

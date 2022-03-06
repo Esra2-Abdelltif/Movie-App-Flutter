@@ -1,5 +1,4 @@
 import 'package:dio/dio.dart';
-import 'package:flutter/material.dart';
 import 'package:movie_app/Shared/Constans/strings.dart';
 
 class TopMovieService {
@@ -7,7 +6,7 @@ class TopMovieService {
 
   TopMovieSercive() {}
 
-  Future<List<dynamic>> GetDataFromTopMovieMoldel() async {
+  Future<dynamic> GetDataFromTopMovieMoldel() async {
 
     Dio dio = new Dio();
     dio.options.baseUrl = BaseUrL;
@@ -19,7 +18,8 @@ class TopMovieService {
           queryParameters: {
             "api_key": "247a18e38e58225afffc980e1d8998e1",
           });
-      print(response.data);
+      print('Top Rate model');
+      print(response.data.toString());
       return response.data;
 
     } catch (e) {

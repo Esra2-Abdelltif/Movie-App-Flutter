@@ -10,17 +10,18 @@ abstract class MovieState {
 
 class MovieInitial extends MovieState {}
 
+
 class PopularMovieLoaded extends MovieState {
-  final List<PopularModel> listpopularmodel;
+  final PopularModel listpopularmodel;
   PopularMovieLoaded(this.listpopularmodel,);
 }
 class TopMovieLoaded extends MovieState {
-
-  final List<TopMovieModel> listTopMoviemodel;
-
- TopMovieLoaded(this.listTopMoviemodel,);
+  final TopMovieModel listTopMoviemodel;
+ TopMovieLoaded(this.listTopMoviemodel);
 }
+
+
 class NowPlayingMovieLoaded extends MovieState {
-  final List<NowPlayingModel> listNowPlayingmodel;
+  final NowPlayingModel listNowPlayingmodel;
   NowPlayingMovieLoaded(this.listNowPlayingmodel,);
 }
