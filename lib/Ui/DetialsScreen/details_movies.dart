@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class Description extends StatelessWidget {
@@ -27,19 +28,17 @@ class Description extends StatelessWidget {
           child: ListView(children: [
             Container(
                 height: 250,
-                child: Positioned(
-                  child: Container(
-                    height: 250,
-                    width: MediaQuery.of(context).size.width,
-                    child: Image.network('${'https://www.themoviedb.org/t/p/w300_and_h450_bestv2/'+posterurl}',
-                      fit: BoxFit.fill,
-                    ),
+                child: Container(
+                  height: 250,
+                  width: MediaQuery.of(context).size.width,
+                  child: Image.network('${'https://www.themoviedb.org/t/p/w300_and_h450_bestv2/'+posterurl}',
+                    fit: BoxFit.fill,
                   ),
                 )),
             SizedBox(height: 15),
             Container(
                 padding: EdgeInsets.all(10),
-                child: Text(name, style: TextStyle(fontSize: 24),)),
+                child: Text(title, style: TextStyle(fontSize: 24),)),
             Container(
                 padding: EdgeInsets.only(left: 10),
                 child:
@@ -56,16 +55,21 @@ class Description extends StatelessWidget {
                     ),
                     textAlign: TextAlign.start,),
                 ],)),
+            SizedBox(height: 15),
             Padding(
               padding: const EdgeInsets.only(left: 10),
               child: Row(
                 children: [
-                  Container(
-                    height: 200,
-                    width: 100,
-                    child: Image.network('${'https://www.themoviedb.org/t/p/w300_and_h450_bestv2/'+backdropurl}'),
+                  Flexible(
+                    child: Container(
+                      height: 200,
+                      width: 140,
+                      child: Image.network('${'https://www.themoviedb.org/t/p/w300_and_h450_bestv2/'+backdropurl}',fit: BoxFit.contain,),
+                    ),
+                    flex: 1,
                   ),
                   Flexible(
+                    flex: 2,
                     child: Container(
                         padding: EdgeInsets.all(10),
                         child:  Text(description),

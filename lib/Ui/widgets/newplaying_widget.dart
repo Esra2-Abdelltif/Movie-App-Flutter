@@ -13,8 +13,10 @@ class NowPlayingItem extends StatelessWidget {
         Navigator.push(
             context,
             MaterialPageRoute(
-                builder: (context)=>Description(description: nowplaying.overview,name: nowplaying.originalTitle,
-                    backdropurl: nowplaying.backdropPath,posterurl: nowplaying.posterPath,rate: nowplaying.voteAverage
+                builder: (context)=>Description(description: nowplaying.overview,name: nowplaying.originalTitle,title:nowplaying.title,
+                  backdropurl:nowplaying.backdropPath,
+                  posterurl:nowplaying.posterPath,
+                  rate:nowplaying.voteAverage
                   ,)));
       },
       child: Container(

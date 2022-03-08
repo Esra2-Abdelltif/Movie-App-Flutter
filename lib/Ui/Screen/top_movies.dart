@@ -20,21 +20,10 @@ class _TopMoviesState extends State<TopMovies> {
     // TODO: implement initState
     super.initState();
     BlocProvider.of<MovieCubit>(context).FetchAllTopMovie();
+
   }
 
-  Widget BuildBlocWidget() {
-   return BlocBuilder<MovieCubit, MovieState>(
-       builder: (context, state)
-    {
-      if ((state is TopMovieLoaded)) {
-        alltopmovies = (state).listTopMoviemodel.results;
-        return buildItem();
 
-      } else {
-        return ShowLooadingIcon();
-      }
-    });
-  }
   Widget buildItem() {
    return Container(
       padding: EdgeInsets.symmetric(horizontal: 10, vertical: 25),
@@ -69,6 +58,16 @@ class _TopMoviesState extends State<TopMovies> {
 
   @override
   Widget build(BuildContext context) {
-    return BuildBlocWidget();
+    return BlocBuilder<MovieCubit, MovieState>(
+        builder: (context, state)
+        {
+          if ((state is TopMovieLoaded)) {
+           alltopmovies = (state).listTopMoviemodel.results;
+            return buildItem();
+
+          } else {
+            return ShowLooadingIcon();
+          }
+        });
   }
 }

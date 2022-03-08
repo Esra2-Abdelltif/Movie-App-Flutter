@@ -1,4 +1,3 @@
-
 import 'package:bloc/bloc.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:movie_app/Bloc/state.dart';
@@ -12,36 +11,30 @@ import 'package:movie_app/Data/Respository/top_movie_repsitory.dart';
 class MovieCubit extends Cubit<MovieState> {
   final PopularRepostory popularRepostory;
   final TopMovieRepostory topMovieRepostory;
-  final NowPlayingRepostory nowPlayingRepostoryy;
+  final NowPlayingRepostory nowPlayingRepostory;
 
   PopularModel popularMovie;
   TopMovieModel topMovie;
   NowPlayingModel nowplayingMovie;
 
-  MovieCubit(this.popularRepostory,this.topMovieRepostory,this.nowPlayingRepostoryy) : super(MovieInitial());
-  static  MovieCubit get(context) => BlocProvider.of(context);
+  MovieCubit(this.popularRepostory, this.topMovieRepostory, this.nowPlayingRepostory) : super(MovieInitial());
 
-  void  FetchAllPopular(){
-   popularRepostory..RequestToPopularMovieWebService().then((value) {
-      emit(PopularMovieLoaded(value));
+  static MovieCubit get(context) => BlocProvider.of(context);
 
-    });
+  void FetchAllPopular() {
+    popularRepostory.RequestToPopularMovieWebService().then((value) {
+        emit(PopularMovieLoaded(value));
+      });
   }
-  // void FetchAllPopularMovie(){
-  //  popularRepostory.RequestToPopularMovieWebService().then((value) {
-  //     emit(PopularMovieLoaded(value));
-  //
-  //   });
-  //
-  // }
-  void  FetchAllTopMovie(){
+
+  void FetchAllTopMovie() {
     topMovieRepostory.RequestToTopMovieWebService().then((value) {
       emit(TopMovieLoaded(value));
-
     });
   }
- void FetchAllNowPlayingMovie(){
-    nowPlayingRepostoryy.RequestToNowPlayingMovieWebService().then((value) {
+
+  void FetchAllNowPlayingMovie() {
+    nowPlayingRepostory.RequestToNowPlayingMovieWebService().then((value) {
       emit(NowPlayingMovieLoaded(value));
     });
   }

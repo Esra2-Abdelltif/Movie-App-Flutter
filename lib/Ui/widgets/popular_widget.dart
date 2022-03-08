@@ -13,8 +13,10 @@ class PopularMovieItem extends StatelessWidget {
         Navigator.push(
             context,
             MaterialPageRoute(
-                builder: (context) => Description(name: popularModel.originalTitle,rate: popularModel.voteAverage,
-                  description: popularModel.overview,posterurl: popularModel.posterPath,backdropurl: popularModel.backdropPath,
+                builder: (context) => Description(description: popularModel.overview,name: popularModel.originalTitle,title: popularModel.title,
+                    backdropurl: popularModel.backdropPath,
+                    posterurl:popularModel.posterPath,
+                    rate: popularModel.voteAverage
                 )));
       },
       child: Container(

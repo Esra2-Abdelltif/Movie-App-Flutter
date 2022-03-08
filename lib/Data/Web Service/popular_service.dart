@@ -1,5 +1,4 @@
 import 'package:dio/dio.dart';
-import 'package:flutter/material.dart';
 import 'package:movie_app/Shared/Constans/strings.dart';
 
 class PopularMovieService {
@@ -21,7 +20,6 @@ class PopularMovieService {
       print('popular model');
       print(response.data.toString());
       return response.data;
-
     } catch (e) {
       print(e.toString());
       return [];

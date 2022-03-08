@@ -1,9 +1,9 @@
 class NowPlayingModel {
   Dates dates;
-  int page;
+  num page;
   List<Results> results;
-  int totalPages;
-  int totalResults;
+  num totalPages;
+  num totalResults;
 
   NowPlayingModel(
       {this.dates,
@@ -62,18 +62,18 @@ class Dates {
 class Results {
   bool adult;
   String backdropPath;
-  List<int> genreIds;
-  int id;
+  List<num> genreIds;
+  num id;
   String originalLanguage;
   String originalTitle;
   String overview;
-  double popularity;
+  num popularity;
   String posterPath;
   String releaseDate;
   String title;
   bool video;
-  double voteAverage;
-  int voteCount;
+  num voteAverage;
+  num voteCount;
 
   Results(
       {this.adult,
@@ -94,7 +94,7 @@ class Results {
   Results.fromJson(Map<String, dynamic> json) {
     adult = json['adult'];
     backdropPath = json['backdrop_path'];
-    genreIds = json['genre_ids'].cast<int>();
+    genreIds = json['genre_ids'].cast<num>();
     id = json['id'];
     originalLanguage = json['original_language'];
     originalTitle = json['original_title'];

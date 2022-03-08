@@ -6,7 +6,6 @@ import 'package:movie_app/Data/Models/popular_model.dart';
 import 'package:movie_app/Shared/Components/component.dart';
 import 'package:movie_app/Ui/widgets/popular_widget.dart';
 
-
 class PopularMovie extends StatefulWidget {
   const PopularMovie({Key key}) : super(key: key);
 
@@ -21,16 +20,14 @@ class _PopularMovieState extends State<PopularMovie> {
     // TODO: implement initState
     super.initState();
     BlocProvider.of<MovieCubit>(context).FetchAllPopular();
-
   }
   Widget BuildBlocWidget() {
     return BlocBuilder<MovieCubit, MovieState>(
-        builder: (context, state)
+        builder:(context,state)
         {
           if ((state is PopularMovieLoaded)) {
            allpopularmovies = (state).listpopularmodel.results;
             return buildItem();
-
           } else {
             return ShowLooadingIcon();
           }

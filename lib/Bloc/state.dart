@@ -13,7 +13,7 @@ class MovieInitial extends MovieState {}
 
 class PopularMovieLoaded extends MovieState {
   final PopularModel listpopularmodel;
-  PopularMovieLoaded(this.listpopularmodel,);
+  PopularMovieLoaded(this.listpopularmodel);
 }
 class TopMovieLoaded extends MovieState {
   final TopMovieModel listTopMoviemodel;
@@ -23,5 +23,5 @@ class TopMovieLoaded extends MovieState {
 
 class NowPlayingMovieLoaded extends MovieState {
   final NowPlayingModel listNowPlayingmodel;
-  NowPlayingMovieLoaded(this.listNowPlayingmodel,);
+  NowPlayingMovieLoaded(this.listNowPlayingmodel);
 }

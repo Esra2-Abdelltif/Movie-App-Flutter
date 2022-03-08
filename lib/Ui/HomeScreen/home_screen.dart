@@ -12,16 +12,10 @@ import 'package:movie_app/Ui/Screen/nowplayiny.dart';
 import 'package:movie_app/Ui/Screen/popular.dart';
 import 'package:movie_app/Ui/Screen/top_movies.dart';
 
-
-
 class HomeScreen extends StatelessWidget {
    HomeScreen({Key key}) : super(key: key);
-  MovieCubit movieCubit= MovieCubit(
-       PopularRepostory(PopularMovieService()),
-       TopMovieRepostory(TopMovieService()),
-       NowPlayingRepostory(NowPlayingMovieSercive())
-       );
-
+  MovieCubit movieCubit=
+  MovieCubit(PopularRepostory(PopularMovieService()), TopMovieRepostory(TopMovieService()), NowPlayingRepostory(NowPlayingMovieSercive()));
 
   @override
   Widget build(BuildContext context) {
@@ -32,9 +26,9 @@ class HomeScreen extends StatelessWidget {
           listener: (BuildContext context,MovieState state)
           {
             if(state is MovieInitial) return print('intial state');
-            if(state is PopularMovieLoaded) return print('popular state');
             if(state is TopMovieLoaded) return print('top movie state');
-            if(state is NowPlayingMovieLoaded) return print('popular state');
+            if(state is NowPlayingMovieLoaded) return print('NowPlaying state');
+            if(state is PopularMovieLoaded) return print('popular state');
 
           },
           builder:(BuildContext context ,MovieState state) {
